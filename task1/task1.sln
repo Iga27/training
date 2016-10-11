@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task1", "task1\task1.csproj", "{EBE219AA-247F-4AE7-8A27-F43B48102D29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoordinatesLibrary", "Coordinates\CoordinatesLibrary.csproj", "{50E83D98-CE02-4688-B881-1AF69FADC973}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBE219AA-247F-4AE7-8A27-F43B48102D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE219AA-247F-4AE7-8A27-F43B48102D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE219AA-247F-4AE7-8A27-F43B48102D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE219AA-247F-4AE7-8A27-F43B48102D29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E83D98-CE02-4688-B881-1AF69FADC973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E83D98-CE02-4688-B881-1AF69FADC973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E83D98-CE02-4688-B881-1AF69FADC973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E83D98-CE02-4688-B881-1AF69FADC973}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
