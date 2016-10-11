@@ -15,7 +15,7 @@ namespace RootLibrary
             return result;
         }
 
-        public static double Calculate(double A, int n, double eps = 0.00001)
+        public static double CalculateRoot(double A, int n, double eps = 0.00001)
         {
             double x1 = 1;
             double x2 = 1.0 / n * ((n - 1) * x1 + A / MyPow(x1, (n - 1)));

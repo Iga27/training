@@ -12,7 +12,7 @@ namespace task2
     {
         static void Main(string[] args)
         {
-            double d = Root.Calculate(7, 3);
+            double d = Root.CalculateRoot(7, 3);
             Console.WriteLine(d);
 
             Console.WriteLine(Math.Pow(7.0, (1.0 / 3)));

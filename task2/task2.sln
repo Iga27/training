@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RootLibrary", "RootLibrary\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinLibrary", "BinLibrary\BinLibrary.csproj", "{BB60A36D-CAFF-4C9C-97B5-7FC693A5D163}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task2.Tests", "task2.Tests\task2.Tests.csproj", "{DDD5869C-038D-40FE-81F9-158BCB9987D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BB60A36D-CAFF-4C9C-97B5-7FC693A5D163}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB60A36D-CAFF-4C9C-97B5-7FC693A5D163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB60A36D-CAFF-4C9C-97B5-7FC693A5D163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD5869C-038D-40FE-81F9-158BCB9987D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD5869C-038D-40FE-81F9-158BCB9987D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD5869C-038D-40FE-81F9-158BCB9987D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD5869C-038D-40FE-81F9-158BCB9987D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
