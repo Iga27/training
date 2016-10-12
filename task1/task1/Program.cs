@@ -13,7 +13,7 @@ namespace task1
         static void Main(string[] args)
         {
             string path = "input.txt";
-           Coordinates.ReadFromFile(path);   
+           Coordinates.FormatInput(path);   
         }
     }
 }

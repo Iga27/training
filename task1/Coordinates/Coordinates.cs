@@ -19,8 +19,13 @@ namespace CoordinatesLibrary
             }
             return true;
         }
-
-        public static bool ReadFromFile(string path)
+        /// <summary>
+        /// gets coordinates from input file and formates them in correct view
+        /// </summary>
+        /// <param name="path">the path to input file </param>
+        ///<exception cref="System.IndexOutOfRangeException">throwing when goes out of range of string array</exception>
+        ///<remarks>uses private method IsCorrectInput()</remarks>
+        public static bool FormatInput(string path)
         {
             StreamReader sr = File.OpenText(path);
 
