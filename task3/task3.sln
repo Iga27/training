@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task3", "task3\task3.csproj", "{A27130AA-E7A0-4B12-B37E-63A160F5D9E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuclidLibrary", "EuclidLibrary\EuclidLibrary.csproj", "{420E6064-AEBA-4242-8E90-C05A9419321A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuclidLibrary.Tests", "EuclidLibrary.Tests\EuclidLibrary.Tests.csproj", "{F86D08C7-C644-4B68-B710-E96D46DEAFF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A27130AA-E7A0-4B12-B37E-63A160F5D9E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27130AA-E7A0-4B12-B37E-63A160F5D9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27130AA-E7A0-4B12-B37E-63A160F5D9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27130AA-E7A0-4B12-B37E-63A160F5D9E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{420E6064-AEBA-4242-8E90-C05A9419321A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420E6064-AEBA-4242-8E90-C05A9419321A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420E6064-AEBA-4242-8E90-C05A9419321A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420E6064-AEBA-4242-8E90-C05A9419321A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F86D08C7-C644-4B68-B710-E96D46DEAFF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86D08C7-C644-4B68-B710-E96D46DEAFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86D08C7-C644-4B68-B710-E96D46DEAFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86D08C7-C644-4B68-B710-E96D46DEAFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
