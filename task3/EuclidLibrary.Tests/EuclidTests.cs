@@ -16,7 +16,7 @@ namespace EuclidLibrary.Tests
             obj = new Euclid();
         }
         [TestMethod]
-        public void IsGcdTest()
+        public void GcdTest()
         {
             //arrange
             int input1 = 12;
@@ -43,7 +43,7 @@ namespace EuclidLibrary.Tests
         }
 
          [TestMethod]
-        public void IsGcdBinTest()
+        public void GcdBinTest()
         {
             //arrange
             int input1 = 12;
