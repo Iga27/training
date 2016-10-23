@@ -13,7 +13,10 @@ namespace task1
         static void Main(string[] args)
         {
             string path = "input.txt";
-           Coordinates.FormatInput(path);   
+
+            Coordinates c = new Coordinates();
+            c.FormatInput(path);
+            Console.WriteLine(c.ToString());
         }
     }
 }

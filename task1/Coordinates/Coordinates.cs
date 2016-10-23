@@ -9,13 +9,15 @@ namespace CoordinatesLibrary
 {
     public class Coordinates
     {
-        private static bool IsCorrectInput(string[] array)
+        private string result;
+        private bool IsCorrectInput(string[] array)
         {
             foreach (string s in array)
             {
                 double tmp = 0;
                 bool result = Double.TryParse(s.Replace('.', ','), out tmp);  // !
-                if (!result) return false;
+                if (!result) 
+                    return false;
             }
             return true;
         }
@@ -25,7 +27,7 @@ namespace CoordinatesLibrary
         /// <param name="path">the path to input file </param>
         ///<exception cref="System.IndexOutOfRangeException">throwing when goes out of range of string array</exception>
         ///<remarks>uses private method IsCorrectInput()</remarks>
-        public static bool FormatInput(string path)
+        public  bool FormatInput(string path)
         {
             StreamReader sr = File.OpenText(path);
 
@@ -37,22 +39,15 @@ namespace CoordinatesLibrary
 
                 if (!IsCorrectInput(fields))
                 {
-                    Console.WriteLine("Invalid input");
                     return false;
                 }
-
-                try
-                {
-                    Console.WriteLine(String.Format("X:{0} Y:{1}", fields[0].Replace('.', ','), fields[1].Replace('.', ',')));
-                }
-                catch (IndexOutOfRangeException ex)
-                {
-                    Console.WriteLine(string.Format("{0}", ex.Message));
-                    return false;
-                }
-
+                   result+=String.Format("X:{0} Y:{1}", fields[0].Replace('.', ','), fields[1].Replace('.', ','))+'\n';
             }
             return true;
+        }
+        public override string ToString()
+        {
+            return result;
         }
     }
 }
