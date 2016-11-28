@@ -1,0 +1,48 @@
+﻿@model App.WEB.Models.CommonViewModel
+@using App.WEB.Models
+@using App.WEB.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<br>
+<br>
+ 
+ 
+<form method="get">
+    <div class="form-inline">
+        
+        <label class="control-label">Выберите категорию: </label>
+        
+       @Html.DropDownList("Category", ViewBag.Categories as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+                    
+
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<div>
+    <h3>Все существующие заявки</h3>
+    <p><a href="/Post/WritePost">Оформить заявку</a></p>
+        @foreach (var p in Model.Posts)
+        { 
+            <ul>
+                 
+                <li><p>@p.Category</p></li>
+                <li><p>@p.Description</p></li>
+                <li><p>@p.Price р</p></li>
+                 
+                <li><p><a href="/Profile/Likes/@p.Id">Принять</a></p></li>   
+                
+            </ul>
+        }
+    
+</div>
+
+<br />
+Страница @(Model.PageInfo.TotalPages < Model.PageInfo.PageNumber ? 0 : Model.PageInfo.PageNumber) из @Model.PageInfo.TotalPages
+<br />
+<div class="btn-group">
+    
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x ,category=Model.CurrentCategory}))
+</div>

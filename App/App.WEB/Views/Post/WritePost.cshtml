@@ -1,0 +1,55 @@
+﻿ 
+@using App.WEB.Models
+@model PostViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Оформление заявки";
+}
+
+ 
+
+    @using (Html.BeginForm("WritePost", "Post", FormMethod.Post))
+    {
+         @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.UserId)
+        <input type="hidden" value="UserId" name="UserId" />
+
+    <legend>Новая заявка</legend>
+
+    <p></p>
+    <div class="editor-label">
+        <p>Выберите категорию: </p>
+    </div>
+        @Html.DropDownListFor(m => m.Category, new SelectList(new string[] { "курьерские услуги", "ремонт", "доставка", "другое" }))
+        @Html.ValidationSummary(true)
+         
+
+          
+            <p></p>
+            <div class="editor-label">
+                <p>На какой бюджет вы рассчитываете: </p>
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Price,null)
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+            <p></p>
+            <div class="editor-label">
+                <p>Мне нужно: </p>
+            </div>
+            <div class="editor-field">
+               @Html.TextAreaFor(m=>m.Description, 5, 50, null)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+             
+
+
+                <p>
+                    <input type="submit" value="Сохранить" />
+                </p>
+ 
+    }
+
+ 
