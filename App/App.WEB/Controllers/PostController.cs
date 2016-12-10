@@ -20,8 +20,8 @@ namespace App.WEB.Controllers
     // [Authorize]    //и как-то делать редирект на страницу со входом
     public class PostController : Controller
     {
-       readonly IPostService postService;
-       readonly  IUserService userService;
+        IPostService postService;
+        IUserService userService;
 
        public int pageSize = 3;
 
@@ -30,6 +30,8 @@ namespace App.WEB.Controllers
             postService = pstService;
             userService = usrService;
         }
+
+         
         public ActionResult Index(string category,int page=1)
         {
             /*if (!String.IsNullOrEmpty(category) && category.GetType() != typeof(string)) //делать проверку,параметр может быть int или другого типа
@@ -56,6 +58,9 @@ namespace App.WEB.Controllers
                 "другое",
                 "доставка"
             });
+
+            if (Request.IsAjaxRequest())
+                return PartialView("IndexPartial",cvm);
             
             return View(cvm);
         }
@@ -69,9 +74,8 @@ namespace App.WEB.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            else
+            else  
                 return View();
-                
         }
 
         [HttpPost]
@@ -79,9 +83,11 @@ namespace App.WEB.Controllers
         {
             try
             {
+               
                 Mapper.Initialize(m => m.CreateMap<PostViewModel, PostDTO>());
                 var postDto = Mapper.Map<PostViewModel, PostDTO>(post);
-                
+
+                postDto.UserId = User.Identity.GetUserId(); //это добавил
                 postService.CreatePost(postDto);
                 return RedirectToAction("Index");  
             }
@@ -97,11 +103,16 @@ namespace App.WEB.Controllers
         //Handle
 
         //role==admin
-        public ActionResult Handle(int page=1)
+        [Authorize(Roles = "admin")]
+        public ActionResult Handle()
         {
-            IEnumerable<PostDTO> postDTOs = postService.GetPosts(page);
+             
+            IEnumerable<PostDTO> postDTOs = postService.GetPosts();
             Mapper.Initialize(m => m.CreateMap<PostDTO, PostViewModel>());
             var posts = Mapper.Map<IEnumerable<PostDTO>, List<PostViewModel>>(postDTOs);
+
+            if (Request.IsAjaxRequest()) //это добавил
+                return PartialView("HandlePartial", posts);
             return View(posts);
         }
        
@@ -112,7 +123,7 @@ namespace App.WEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Mapper.Initialize(m => m.CreateMap<PostDTO,PostViewModel>());
+           // Mapper.Initialize(m => m.CreateMap<PostDTO,PostViewModel>());
             IMapper Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
             //var source = new PostDTO();
            // var postView = Mapper.Map<PostDTO, PostViewModel>(source);
@@ -122,6 +133,7 @@ namespace App.WEB.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(postView);
         }
 
@@ -134,14 +146,13 @@ namespace App.WEB.Controllers
                 Mapper.Initialize(m => m.CreateMap<PostViewModel, PostDTO>());
                 var postDto = Mapper.Map<PostViewModel, PostDTO>(postView);
                 postService.EditPost(postDto);
-                return RedirectToAction("Handle");
+                return RedirectToAction("Handle"); //View
             }
             catch (ValidationException ex)
             {
                 ModelState.AddModelError(ex.Property, ex.Message);
             }
-            return View(postView);
-            
+            return View(postView);           
         }
        
         public ActionResult Delete(int? id)  

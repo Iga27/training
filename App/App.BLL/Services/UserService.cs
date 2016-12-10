@@ -37,7 +37,7 @@ namespace App.BLL.Services
                 UserProfile userProfile = new UserProfile { Id = user.Id, Info = userDto.Info, Name = userDto.Name,Age=userDto.Age };
 
                 if (result.Succeeded)
-                DB.Profiles.Create(userProfile);
+                DB.UserProfiles.Create(userProfile);
                 await DB.SaveAsync();
                 return new OperationInfo(true, "Регистрация успешно пройдена", "");
             }

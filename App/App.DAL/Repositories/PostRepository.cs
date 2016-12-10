@@ -25,6 +25,12 @@ namespace App.DAL.Repositories
                 .Skip((page-1)*pageSize).Take(pageSize);  //потом выводить по времени последние добавленные             
         }
 
+       public IEnumerable<Post> GetAll()
+       {
+           return db.Posts.Include(m => m.User).OrderByDescending(d => d.Price);           
+       }
+
+
         public Post Get(int id)
         {
             return db.Posts.Find(id);

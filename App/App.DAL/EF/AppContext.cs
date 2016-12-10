@@ -13,7 +13,7 @@ namespace App.DAL.EF
        // public DbSet<User> Users { get; set; }
 
        // public DbSet<Role> Roles { get; set; }
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }  
 
         public DbSet<Post> Posts { get; set; }
 
@@ -26,9 +26,9 @@ namespace App.DAL.EF
     {
         protected override void Seed(AppContext db)
         {
-            db.Posts.Add(new Post { Description = "недалеко", Category = "Курьерская доставка", Price = 220 });
-            db.Posts.Add(new Post { Description = "еда", Category = "Курьерская доставка", Price = 820 });
-            db.Posts.Add(new Post { Description = "большой пакет", Category = "Курьерская доставка на машине", Price = 880 });
+            db.Posts.Add(new Post { Description = "недалеко", Category = "курьерские услуги", Price = 220 });
+            db.Posts.Add(new Post { Description = "еда", Category = "курьерские услуги", Price = 820 });
+            db.Posts.Add(new Post { Description = "большой пакет", Category = "другое", Price = 880 });
             db.Posts.Add(new Post { Description = "починить кран", Category = "Ремонт", Price = 560 });
             db.SaveChanges();
         }

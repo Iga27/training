@@ -10,11 +10,11 @@ namespace App.BLL.Interfaces
 
         void EditPost(PostDTO postDto);
         PostDTO GetPost(int? id);
-        IEnumerable<PostDTO> GetPosts(int page);
+        IEnumerable<PostDTO> GetPosts();
 
-        void DeletePost(int ? id);
+        void DeletePost(int? id);
 
-        IEnumerable<PostDTO> GetPostsByCategory(string category,int page);
+        IEnumerable<PostDTO> GetPostsByCategory(string category, int page);
 
         int Count();
 

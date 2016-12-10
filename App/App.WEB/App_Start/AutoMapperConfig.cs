@@ -17,7 +17,9 @@ namespace App.WEB.App_Start
             MapperConfiguration = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<PostDTO, PostViewModel>().ReverseMap();
+                cfg.CreateMap<UserProfileDTO, UserProfileViewModel>().ReverseMap();  //это добавил
             });
+           
         }
     }
 }

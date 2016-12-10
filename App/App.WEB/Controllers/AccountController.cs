@@ -23,7 +23,7 @@ namespace App.WEB.Controllers
         {
             userService = service;
         }
-        private IAuthenticationManager AuthenticationManager //этот метод скорее всего не нужен
+        private IAuthenticationManager AuthenticationManager //нужен
         {
             get
             {
@@ -95,7 +95,17 @@ namespace App.WEB.Controllers
                 };
                 OperationInfo operationInfo = await userService.Create(userDto);
                 if (operationInfo.Succedeed)
-                    return RedirectToAction("Index", "Home"); ////return View
+                {
+                    ClaimsIdentity claim = await userService.Authenticate(userDto);
+                    AuthenticationManager.SignOut();
+                    AuthenticationManager.SignIn(new AuthenticationProperties
+                    {
+                        IsPersistent = true
+                    }, claim);
+                    // return RedirectToAction("Index", "Home"); ////return View
+                   // return View("~/Views/Home/Index.cshtml");
+                    return RedirectToAction("Index", "Home");
+                }
                 else
                     ModelState.AddModelError(operationInfo.Property, operationInfo.Message);
             }

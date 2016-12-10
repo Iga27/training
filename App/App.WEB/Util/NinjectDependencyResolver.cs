@@ -32,6 +32,7 @@ namespace App.WEB.Util
         {
             kernel.Bind<IPostService>().To<PostService>();
             kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IUserProfileService>().To<UserProfileService>();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace App.DAL.Interfaces
         MyUserManager Users { get; }
 
         MyRoleManager Roles { get; }
-        IRepository<UserProfile> Profiles { get; }
+        IUserProfileRepository UserProfiles { get; }
        
         IPostRepository Posts { get; } 
 

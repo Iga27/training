@@ -10,10 +10,12 @@ namespace App.DAL.Interfaces
     public interface IPostRepository: IRepository<Post>
     {
         IEnumerable<Post> GetAll(int page);
+        IEnumerable<Post> GetAll();
         Post Get(int id);
         IEnumerable<Post> Find(Func<Post, Boolean> predicate,int page);
-        void Update(Post item);
+
         void Delete(int id);
+       //здесь взял Update и delete
         int Count();
     }
 }

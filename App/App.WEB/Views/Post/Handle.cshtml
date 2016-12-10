@@ -6,43 +6,15 @@
     ViewBag.Title = "Управление постами";
 }
 
-<h2>Управление постами</h2>
 
-<p>
-    @Html.ActionLink("Создать пост", "WritePost")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var p in Model)
-    {
-        <tr>
-            <td>
-                @p.Category
-            </td>
-            <td>
-                @p.Description
-            </td>
-            <td>
-                @p.Price
-            </td>
-            <td>
-                @Html.ActionLink("Редактировать", "Edit", new { id = @p.Id}) 
-                @Html.ActionLink("Удалить", "Delete", new { id = @p.Id })
-            </td>
-        </tr>
-    }
 
-</table>
+<div id="container">
+    @Html.Partial("HandlePartial")
+</div>
+
+
+@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+
 

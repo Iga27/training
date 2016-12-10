@@ -22,7 +22,7 @@ namespace App.DAL.Repositories
 
           MyRoleManager roleRepository;
 
-          ProfileRepository profileRepository;
+          UserProfileRepository profileRepository;
 
           PostRepository postRepository;
 
@@ -40,12 +40,12 @@ namespace App.DAL.Repositories
                  return postRepository;
              }       
          }
-         public IRepository<UserProfile> Profiles
+         public IUserProfileRepository UserProfiles
          {
              get
              {
                  if (profileRepository == null)
-                     profileRepository = new ProfileRepository(db);
+                     profileRepository = new UserProfileRepository(db);
                  return profileRepository;
              }
          }

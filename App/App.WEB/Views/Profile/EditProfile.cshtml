@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNet.Identity
+@model App.WEB.Models.UserProfileViewModel
+@{
+    ViewBag.Title = "EditProfile";
+}
+
+<h2>Редактирование профиля</h2>
+
+@using (Html.BeginForm("EditProfile", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+   /// @Html.HiddenFor(m => m.Id)
+ 
+ 
+    
+
+    <p></p>
+    <p></p>
+
+    
+    
+
+    <div class="editor-label">
+        <p>Информация о себе: </p>
+    </div>
+
+    <div class="editor-field">
+        <h3>Фотография вашего профиля</h3>
+        <input type="file" id="file" name="file" />
+    </div>
+    
+    <div class="editor-field">
+        <h3>Ваш возраст</h3>
+        @Html.EditorFor(model => model.Age)
+        @Html.ValidationMessageFor(model => model.Age)
+    </div>
+    
+    <div class="editor-field">
+        <h3>О себе</h3>
+        @Html.TextAreaFor(m => m.Info, 5, 50, null)
+        @Html.ValidationMessageFor(model => model.Info)
+    </div>
+    <p></p>
+    <div class="editor-label">
+        <p>Виды выполняемых работ: </p>
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(m => m.CategoriesOfWork, 5, 50, null)
+        @Html.ValidationMessageFor(model => model.CategoriesOfWork)
+    </div>
+
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+
+}
+

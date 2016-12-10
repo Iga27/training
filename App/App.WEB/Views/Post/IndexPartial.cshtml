@@ -1,0 +1,30 @@
+﻿@model App.WEB.Models.CommonViewModel
+@using App.WEB.Models
+@using App.WEB.Helpers
+
+<div>
+    @foreach (var p in Model.Posts)
+    {
+        <ul class="span12 well" style="height:265px;padding-top:5px;">
+
+            <li><p>@p.Category</p></li>
+            <li><p>@p.Description</p></li>
+            <li><p><a href="/Profile/UserProfile/@p.UserId"><h6>к заказчику</h6></a></p></li>
+            <li><p>@p.Price р</p></li>
+
+            <li><p><a href="/Profile/Likes/@p.Id">Принять</a></p></li>
+        </ul>
+
+    }
+</div>
+
+<br />
+    Страница @(Model.PageInfo.TotalPages < Model.PageInfo.PageNumber ? 0 : Model.PageInfo.PageNumber) из @Model.PageInfo.TotalPages
+    <br />
+    <div class="btn-group" id="myPager">
+
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x, category = Model.CurrentCategory }))
+
+    </div>
+
+

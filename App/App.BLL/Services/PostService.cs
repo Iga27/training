@@ -60,10 +60,10 @@ namespace App.BLL.Services
             }
         }
 
-        public IEnumerable<PostDTO>GetPosts(int page) //проверку на page сделать
+        public IEnumerable<PostDTO>GetPosts() //проверку на page сделать
         {
             Mapper.Initialize(m => m.CreateMap<Post, PostDTO>());
-            return Mapper.Map<IEnumerable<Post>,List<PostDTO>>(DB.Posts.GetAll(page));
+            return Mapper.Map<IEnumerable<Post>,List<PostDTO>>(DB.Posts.GetAll());
         }
 
         public void EditPost(PostDTO postDto)

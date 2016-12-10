@@ -17,8 +17,13 @@ namespace App.DAL.Entities
 
         public string Info{ get; set; }
 
+        public string CategoriesOfWork { get; set; }
 
-        public virtual  User User { get; set; }
+       // [Required]
+        public virtual  User User { get; set; } //может и не виртуал
+
+        // [HiddenInput(DisplayValue = false)]
+        public string File { get; set; }
 
     }
 }

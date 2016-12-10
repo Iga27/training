@@ -1,48 +1,65 @@
-﻿@model App.WEB.Models.CommonViewModel
-@using App.WEB.Models
+﻿@using Microsoft.AspNet.Identity
 @using App.WEB.Helpers
+@using App.WEB.Models
+ 
+@model App.WEB.Models.CommonViewModel
+
+ 
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "container",
+        Url = Url.Action("Index")
+    };
 }
  
+
+@section scripts
+{
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", "#myPager a[href]", function () {
+                $.ajax({
+                    url: $(this).attr("href"),
+                    type: 'GET',
+                    cache: false,
+                    success: function (result) {
+                        $('#container').html(result);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+}
+
 <br>
 <br>
  
  
-<form method="get">
-    <div class="form-inline">
-        
-        <label class="control-label">Выберите категорию: </label>
-        
-       @Html.DropDownList("Category", ViewBag.Categories as SelectList,
+    @using (Ajax.BeginForm("Index", ajaxOptions))
+    {
+        <div class="form-inline">
+            <p><a href="/Profile/UserProfile/@User.Identity.GetUserId()">Мой профиль</a></p>
+            <p><a href="/Post/WritePost">Оформить заявку</a></p>
+            <label class="control-label">Выберите категорию: </label>
+
+            @Html.DropDownList("Category", ViewBag.Categories as SelectList,
                     htmlAttributes: new { @class = "form-control" })
-                    
 
-        <input type="submit" value="Фильтр" class="btn btn-default" />
-    </div>
-</form>
-<div>
-    <h3>Все существующие заявки</h3>
-    <p><a href="/Post/WritePost">Оформить заявку</a></p>
-        @foreach (var p in Model.Posts)
-        { 
-            <ul>
-                 
-                <li><p>@p.Category</p></li>
-                <li><p>@p.Description</p></li>
-                <li><p>@p.Price р</p></li>
-                 
-                <li><p><a href="/Profile/Likes/@p.Id">Принять</a></p></li>   
-                
-            </ul>
-        }
-    
-</div>
+            <input type="submit" value="Фильтр" class="btn btn-default" />
 
-<br />
-Страница @(Model.PageInfo.TotalPages < Model.PageInfo.PageNumber ? 0 : Model.PageInfo.PageNumber) из @Model.PageInfo.TotalPages
-<br />
-<div class="btn-group">
-    
-    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x ,category=Model.CurrentCategory}))
+            <h3>Все существующие заявки</h3>
+        </div>
+    }
+     
+<div id="container">
+    @Html.Partial("IndexPartial")
 </div>
+  
+ 
+@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")

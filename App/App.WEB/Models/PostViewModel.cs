@@ -28,7 +28,7 @@ namespace App.WEB.Models
 
         // [ScaffoldColumn(false)]
        // [HiddenInput(DisplayValue = false)]
-        //[Key]
+      //  [Key]
          public string UserId { get; set; } //? скрытое должно быть
 
      //   public DateTime? Date { get; set; } //////////

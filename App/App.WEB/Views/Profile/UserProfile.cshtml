@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNet.Identity
+@model App.WEB.Models.UserProfileViewModel
+@{
+    ViewBag.Title = "Профиль";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<form method="get">
+    <div class="center-block">
+
+        @if (Model.File != null)
+        {
+            <div>
+                <img src=@Url.Content(Model.File) alt="нет фото" class="img-responsive">
+            </div>
+        }
+        else 
+        { <img src=@Url.Content("~/Images/avatar.jpg") alt="нет фото" class="img-responsive"> }
+        <div class="jumbotron">
+            <h3>Личная информация</h3>
+            <h1>@Model.Name</h1>
+            @Html.LabelFor(model => model.Info)
+            <p class="lead"> @Html.DisplayFor(model => model.Info) </p>
+            @Html.LabelFor(model => model.CategoriesOfWork)
+            <p class="lead"> @Html.DisplayFor(model => model.CategoriesOfWork) </p>
+            @if(User.Identity.GetUserId()==Model.Id)
+            { 
+            <p><a href="/Profile/EditProfile/@Model.Id" class="btn btn-primary btn-lg">Редактировать &raquo;</a></p>
+            }
+        </div>
+
+
+        <!-- <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>-->
+        <!--   <div class="pull-right">
+              <input type="button" class="btn btn-primary" value="Редактировать" id="editBtn" onclick="location.href='@Url.Action("EditProfile", "Profile")'">
+          </div>-->
+    </div>
+
+</form>
+
+
+
+
+
+
+ 
+
+    
+
+ 
