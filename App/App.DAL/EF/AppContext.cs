@@ -17,6 +17,8 @@ namespace App.DAL.EF
 
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<GuestBookMessage> GuestBookMessages { get; set; }
+
         static AppContext()  //потом удалить
         {
             Database.SetInitializer<AppContext>(new AppDbInitializer());

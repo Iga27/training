@@ -93,17 +93,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessModels\PageInfo.cs" />
+    <Compile Include="DTO\GuestBookMessageDTO.cs" />
     <Compile Include="DTO\PostDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\UserProfileDTO.cs" />
     <Compile Include="Infrastructure\OperationInfo.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="Interfaces\IGuestBookService.cs" />
     <Compile Include="Interfaces\IPostService.cs" />
     <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\IUserProfileService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GuestBookService.cs" />
     <Compile Include="Services\PostService.cs" />
     <Compile Include="Services\ServiceCreator.cs" />
     <Compile Include="Services\UserProfileService.cs" />

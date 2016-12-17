@@ -31,6 +31,7 @@ namespace App.WEB.Util
         private void AddBindings()
         {
             kernel.Bind<IPostService>().To<PostService>();
+            kernel.Bind<IGuestBookService>().To<GuestBookService>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserProfileService>().To<UserProfileService>();
         }

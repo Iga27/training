@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Гостевая книга";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+ 
+
+<h2>Вы можете оставить свой комментарий</h2>
+
+@using (Ajax.BeginForm("AddMessage", "Home", new AjaxOptions { UpdateTargetId = "container" }))
+{
+    <div>
+        <h3>Добавить запись</h3>
+        Ваше имя: <br /> <input type="text" name="GuestName" maxlength="50" class="form-control" placeholder=" Введите имя" />
+        <br />
+        Сообщение <br />
+        <div class="form-group">
+            <textarea name="Message" rows="5" cols="40" class="form-control" placeholder="Введите сообщение"></textarea>
+        </div>
+            <br />
+        <button type="submit" id="submit" name="submit" class="btn btn-success">Отправить</button>
+ </div>
+}
+
+
+
+<div id="container">
+    @Html.Partial("GuestBookPartial")
+</div>
+
+
+
+
+@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+

@@ -12,7 +12,9 @@ namespace App.DAL.Interfaces
         MyRoleManager Roles { get; }
         IUserProfileRepository UserProfiles { get; }
        
-        IPostRepository Posts { get; } 
+        IPostRepository Posts { get; }
+
+        IGuestBookRepository GuestBook { get; }
 
          Task SaveAsync();
 

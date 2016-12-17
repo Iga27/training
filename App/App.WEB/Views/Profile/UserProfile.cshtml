@@ -23,8 +23,15 @@
             <h1>@Model.Name</h1>
             @Html.LabelFor(model => model.Info)
             <p class="lead"> @Html.DisplayFor(model => model.Info) </p>
+
+            @Html.LabelFor(model => model.PhoneNumber)
+            <p class="lead"> @Html.DisplayFor(model => model.PhoneNumber) </p>
+
+            @Html.LabelFor(model => model.Age)
+            <p class="lead"> @Html.DisplayFor(model => model.Age) </p>
+
             @Html.LabelFor(model => model.CategoriesOfWork)
-            <p class="lead"> @Html.DisplayFor(model => model.CategoriesOfWork) </p>
+            <p class="lead" style="word-break: break-all;"> @Html.DisplayFor(model => model.CategoriesOfWork) </p>
             @if(User.Identity.GetUserId()==Model.Id)
             { 
             <p><a href="/Profile/EditProfile/@Model.Id" class="btn btn-primary btn-lg">Редактировать &raquo;</a></p>

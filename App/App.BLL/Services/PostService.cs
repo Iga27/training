@@ -26,7 +26,8 @@ namespace App.BLL.Services
                 Description=postDto.Description,
                 Category=postDto.Category,
                 UserId = postDto.UserId,
-                Price=postDto.Price
+                Price=postDto.Price,
+                Date=postDto.Date
             };
             DB.Posts.Create(post);
             DB.Save();
@@ -82,8 +83,8 @@ namespace App.BLL.Services
 
         public void DeletePost(int? id)
         {
-            if (id == null)
-                throw new ValidationException("укажите id поста", "");
+           // if (id == null)
+             //   throw new ValidationException("укажите id поста", "");
 
             DB.Posts.Delete((int)id); //приведение нормальное? из nullable(id.HasValue)  id.Value
             DB.Save();

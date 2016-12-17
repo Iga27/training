@@ -13,11 +13,13 @@ namespace App.BLL.DTO
 
         public string Name { get; set; }
 
-        public string Age { get; set; }
+        public int Age { get; set; }
 
         public string Info { get; set; }
 
         public string CategoriesOfWork { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public string File { get; set; }
        // public virtual User User { get; set; }

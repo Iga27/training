@@ -14,6 +14,6 @@ namespace App.BLL.DTO
         public int Price { get; set; }
         public string UserId { get; set; } //тип string
 
-        //public DateTime? Date { get; set; }
+        public DateTime ? Date { get; set; }
     }
 }

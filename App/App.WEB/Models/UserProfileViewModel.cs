@@ -13,21 +13,26 @@ namespace App.WEB.Models
         //возможно здсь не нужны атрибуты(а в DAL)
         public string Id { get; set; }
 
-        [Required]
+       // [Required]
         [Display(Name = "Меня зовут")]
         public string Name { get; set; }
 
-        [Required]
+      //  [Required]
         [Display(Name = "Возраст")]
-        public string Age { get; set; }
+        [Range(0, 200, ErrorMessage = "Недопустимый возраст")]
+        public int ? Age { get; set; }
 
-        [Required]
+      //  [Required]
         [Display(Name = "Обо мне")]
         public string Info { get; set; }
 
-        [Required]
+      //  [Required]
         [Display(Name = "Виды выполняемых работ")]
         public string CategoriesOfWork { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Телефон")]
+        public string PhoneNumber { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public string File { get; set; }

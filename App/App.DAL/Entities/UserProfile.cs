@@ -12,12 +12,14 @@ namespace App.DAL.Entities
         public string Id { get; set; }
 
         public string Name { get; set; }
-
-        public string Age { get; set; }
+       
+        public int Age { get; set; }
 
         public string Info{ get; set; }
 
         public string CategoriesOfWork { get; set; }
+
+        public string PhoneNumber { get; set; }
 
        // [Required]
         public virtual  User User { get; set; } //может и не виртуал

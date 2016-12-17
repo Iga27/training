@@ -13,18 +13,24 @@ namespace App.WEB.Models
        // [HiddenInput(DisplayValue = false)]
        // [Key]
         //может убрать его вообще из ViewModel
-        public int Id { get; set; }
+         public int Id { get; set; }
+
          [Required]
+         [MaxLength(500, ErrorMessage = "Превышено максимальное число символов")]
          [Display(Name = "Описание")]
          public string Description { get; set; }
+
          [Required]
          [Display(Name = "Категория")]
          public string Category { get; set; }
+
          [Required]
-         [Display(Name = "Бюджет")]
+         [Display(Name = "Цена")]
+         [Range(0, 999999, ErrorMessage = "Недопустимая цена")]
          public int Price { get; set; }
 
-        
+        [Display(Name = "Дата создания(редактирования)")]
+         public DateTime ? Date { get; set; } ////
 
         // [ScaffoldColumn(false)]
        // [HiddenInput(DisplayValue = false)]

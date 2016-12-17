@@ -39,7 +39,16 @@ namespace App.WEB.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }*/
 
-            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = postService.Count() };
+            PageInfo pageInfo = new PageInfo
+            {
+                PageNumber = page,
+                PageSize = pageSize,
+                TotalItems = category == null ?
+           postService.Count() :
+           postService.GetPosts().Where(m=>m.Category==category).Count()
+            };
+
+           
                 //=category==null?
             //postService.Count() : postService.GetPosts(page).Where(m=>m.Category==category).Count()};
 
@@ -88,6 +97,7 @@ namespace App.WEB.Controllers
                 var postDto = Mapper.Map<PostViewModel, PostDTO>(post);
 
                 postDto.UserId = User.Identity.GetUserId(); //это добавил
+                postDto.Date = DateTime.Now; //это добавил
                 postService.CreatePost(postDto);
                 return RedirectToAction("Index");  
             }
@@ -145,6 +155,7 @@ namespace App.WEB.Controllers
             {
                 Mapper.Initialize(m => m.CreateMap<PostViewModel, PostDTO>());
                 var postDto = Mapper.Map<PostViewModel, PostDTO>(postView);
+                postDto.Date = DateTime.Now; //добавил
                 postService.EditPost(postDto);
                 return RedirectToAction("Handle"); //View
             }

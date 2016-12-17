@@ -13,7 +13,7 @@ namespace App.BLL.DTO
         public string Password { get; set; }
       //  public string UserName { get; set; } //логин
         public string Name { get; set; }  //обычное имя
-        public string Age { get; set; }
+        public int Age { get; set; }
         public string Info { get; set; }
         public string PhoneNumber { get; set; }
         public string Role { get; set; }

@@ -64,8 +64,9 @@ namespace App.WEB.Controllers
 
                 if (file != null)
                 {
+                    DateTime time = DateTime.Now;
                     string fileName = System.IO.Path.GetFileName(file.FileName);
-                    string path = "~/Images/" + fileName;
+                    string path = "~/Images/" +time.ToString("H:mm:ss").Replace(":", "_")+ fileName; 
                     file.SaveAs(Server.MapPath(path));
                     editedProfile.File = path;
                 }

@@ -26,6 +26,8 @@ namespace App.DAL.Repositories
 
           PostRepository postRepository;
 
+          GuestBookRepository guestBookRepository;
+
          public AppUnitOfWork(string connectionString) 
          {
              this.db = new AppContext(connectionString);
@@ -39,6 +41,16 @@ namespace App.DAL.Repositories
                      postRepository = new PostRepository(db);
                  return postRepository;
              }       
+         }
+
+         public IGuestBookRepository GuestBook
+         {
+             get
+             {
+                 if (guestBookRepository == null)
+                     guestBookRepository = new GuestBookRepository(db);
+                 return guestBookRepository;
+             }
          }
          public IUserProfileRepository UserProfiles
          {
