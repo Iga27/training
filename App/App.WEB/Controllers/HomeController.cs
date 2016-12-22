@@ -21,12 +21,6 @@ namespace App.Web.Controllers
         }
         public ActionResult Index()
         {
-           /* var messagesDto = guestBookService.GetMessages();
-            Mapper.Initialize(m => m.CreateMap<GuestBookMessageDTO, GuestBookMessageViewModel>());
-            var messages = Mapper.Map<IEnumerable<GuestBookMessageDTO>, List<GuestBookMessageViewModel>>(messagesDto);
-            if (Request.IsAjaxRequest())
-                return PartialView("IndexPartial", messages);
-            return View("Index",messages);*/
             return View("Index");
         }
 
@@ -51,12 +45,7 @@ namespace App.Web.Controllers
             return View(guestViewModel);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
+ 
 
         public ActionResult GuestBook()
         {
@@ -66,6 +55,12 @@ namespace App.Web.Controllers
             if (Request.IsAjaxRequest())
                 return PartialView("GuestBookPartial", messages);
             return View("GuestBook", messages);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            guestBookService.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

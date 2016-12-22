@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<App.WEB.Models.GuestBookMessageViewModel>
 
-
-
-
-<h3>Все записи</h3>
+<h3 class="text-center">Все записи</h3>
+<br>
 @foreach (var item in Model)
 {
     <div class="row">
@@ -11,7 +9,7 @@
             <div class="panel panel-info">
                 <div class="panel-body">
                     
-                    <p style="word-break: break-all;">@item.Message</p>
+                    <p class="text-primary" style="word-break: break-all;">@item.Message</p>
                          
                     </div>
 

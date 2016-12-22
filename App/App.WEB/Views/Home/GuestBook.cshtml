@@ -4,23 +4,23 @@
 }
 
 
- 
-
-<h2>Вы можете оставить свой комментарий</h2>
+<h2 class="text-center text-info">Вы можете оставить свой комментарий</h2>
 
 @using (Ajax.BeginForm("AddMessage", "Home", new AjaxOptions { UpdateTargetId = "container" }))
 {
-    <div>
-        <h3>Добавить запись</h3>
-        Ваше имя: <br /> <input type="text" name="GuestName" maxlength="50" class="form-control" placeholder=" Введите имя" />
-        <br />
-        Сообщение <br />
-        <div class="form-group">
-            <textarea name="Message" rows="5" cols="40" class="form-control" placeholder="Введите сообщение"></textarea>
-        </div>
+        <div>
+            <h3 class="text-success">Добавить запись</h3>
+            Ваше имя: <br /> <input type="text" name="GuestName" maxlength="50" class="form-control" placeholder=" Введите имя" />
             <br />
-        <button type="submit" id="submit" name="submit" class="btn btn-success">Отправить</button>
- </div>
+            Сообщение <br />
+            <div class="form-group">
+                <textarea name="Message" rows="5" cols="40" class="form-control" placeholder="Введите сообщение"></textarea>
+            </div>
+            <br />
+         
+                <button type="submit" id="submit" name="submit" class="btn btn-success">Отправить</button>
+            
+        </div>
 }
 
 

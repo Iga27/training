@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace App.DAL.Entities
 {
@@ -14,7 +13,7 @@ namespace App.DAL.Entities
         
         public int Price { get; set; }
   
-        public string UserId { get; set; } //тип string
+        public string UserId { get; set; }  
          
         public User User { get; set; } 
 

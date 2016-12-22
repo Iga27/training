@@ -25,50 +25,53 @@
 </style>
 
 
-<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+<link href=@Url.Content("~/Content/Site.css") rel="stylesheet" type="text/css" />
 
 @using (Html.BeginForm("WritePost", "Post", FormMethod.Post))
     {
     <div class="container">
-        <div class="col-md-5">
-            <div class="form-area">
-                @Html.HiddenFor(m => m.Id)
-                @Html.HiddenFor(m => m.UserId)
-                <input type="hidden" value="UserId" name="UserId" />
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-area">
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.HiddenFor(m => m.UserId)
+                    <input type="hidden" value="UserId" name="UserId" />
 
-                <h3 style="margin-bottom: 25px; text-align: center;">Новая заявка</h3>
+                    <h3 class="text-info" style="margin-bottom: 25px; text-align: center;">Новая заявка</h3>
 
-                <p></p>
-                <div class="editor-label">
-                    <p>Выберите категорию: </p>
+                    <p></p>
+                    <div class="editor-label">
+                        <p>Выберите категорию: </p>
+                    </div>
+                    @Html.DropDownListFor(m => m.Category, new SelectList(new string[] { "курьерские услуги", "ремонт", "доставка", "другое" }),
+                    new { @class = "form-control" })
+                    @Html.ValidationSummary(true)
+
+
+
+                    <p></p>
+                    <div class="editor-label">
+                        <p>На какой бюджет вы рассчитываете: </p>
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Price, new { @class = "col-sm-3" })
+                        @Html.ValidationMessageFor(model => model.Price)
+                    </div>
+                    <p></p>
+                    <div class="editor-label">
+                        <p>Мне нужно: </p>
+                    </div>
+                    <div class="editor-field form-group">
+                        @Html.TextAreaFor(m => m.Description, 5, 50, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+
+
+
+                    <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Сохранить</button>
+
                 </div>
-                @Html.DropDownListFor(m => m.Category, new SelectList(new string[] { "курьерские услуги", "ремонт", "доставка", "другое" }), new { @class ="form-control"})
-                @Html.ValidationSummary(true)
-
-
-
-                <p></p>
-                <div class="editor-label">
-                    <p>На какой бюджет вы рассчитываете: </p>
-                </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Price, null)
-                    @Html.ValidationMessageFor(model => model.Price)
-                </div>
-                <p></p>
-                <div class="editor-label">
-                    <p>Мне нужно: </p>
-                </div>
-                <div class="editor-field form-group">
-                    @Html.TextAreaFor(m => m.Description, 5, 50, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Description)
-                </div>
-
-
-
-                <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Сохранить</button>
-
-                </div>
+            </div>
             </div>
         </div>
                 }

@@ -5,26 +5,13 @@
 <div>
     @foreach (var p in Model.Posts)
     {
-        ///<ul class="span12 well" style="height:265px;padding-top:5px;">
-
-        ///  <li><p>@p.Category</p></li>
-        ///  <li><p>@p.Description</p></li>
-        ///  <li><p><a href="/Profile/UserProfile/@p.UserId"><h6>к заказчику</h6></a></p></li>
-        ///  <li><p>@p.Price р</p></li>
-        ///  <li><p>@p.Date</p></li>
-
-        ///    <li><p><a href="/Profile/Likes/@p.Id">Принять</a></p></li>
-        /// </ul>
-        ///
-
-        
         <div class="row">
             <div class="col-md-9 col-lg-9">
                 <div class="span8 well ">
-                        <h3>@p.Category</h3>
-                    <p style="word-break: break-all;">
+                    <h3 class="text-danger">@p.Category</h3>
+                    <h4 style="word-break: break-all;">
                         @p.Description<br />
-                    </p>
+                    </h4>
                       
                         <div class="pull-right">
                             <input type="submit" class="btn btn-success btn-lg " value="@p.Price р" />
@@ -32,7 +19,7 @@
 
                         <hr>
                     <div>
-                        <span class="badge badge-success ">Опубликовано @p.Date</span><a href="/Profile/UserProfile/@p.UserId"><h6>к заказчику</h6></a>
+                        <span class="badge badge-success">Опубликовано @p.Date</span><a href="/Profile/UserProfile/@p.UserId"><h6>к заказчику</h6></a>
                     </div>
                     </div>
                 

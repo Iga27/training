@@ -42,7 +42,7 @@ namespace App.WEB.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var modules = new INinjectModule[] { new ServiceModule("MyConnection") }; //DefaultConnection
+            var modules = new INinjectModule[] { new ServiceModule("MyConnection") };  
             var kernel = new StandardKernel(modules);
             try
             {

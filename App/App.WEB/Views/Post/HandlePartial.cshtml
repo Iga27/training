@@ -2,9 +2,9 @@
 
 
  
-<h2>Управление постами</h2>
+<h2>Управление</h2>
 <p>
-    <a href="/Post/WritePost" class="btn btn-default btn-lg">Создать пост</a>
+    <a href=@Url.Action("WritePost", "Post") class="btn btn-default btn-lg">Создать пост</a>
 </p>
 <div class="table-responsive"> 
 <table class="table table-hover">
@@ -41,8 +41,8 @@
             </td>
             <td>
                <button type="button" class="btn btn-default btn-xs"> @Html.ActionLink("Редактировать", "Edit", new { id = @p.Id })</button>
-               <button type="button" class="btn btn-default btn-xs">@Ajax.ActionLink("Удалить", "Delete", new { id = @p.Id }, new AjaxOptions { UpdateTargetId = "container" })</button>
-</td>
+               <button type="button" class="btn btn-default btn-xs">@Ajax.ActionLink("Удалить", "Delete", new { id = @p.Id }, new AjaxOptions { UpdateTargetId = "container"})</button>
+            </td>
         </tr>
     }
 

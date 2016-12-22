@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace App.BLL.DTO
 {
@@ -22,6 +19,6 @@ namespace App.BLL.DTO
         public string PhoneNumber { get; set; }
 
         public string File { get; set; }
-       // public virtual User User { get; set; }
+
     }
 }

@@ -13,21 +13,21 @@ namespace App.DAL.Repositories
     {
         private AppContext db;
 
-        public int pageSize = 3;
+        public int pageSize = 5;
         public PostRepository(AppContext context)
         {
             this.db = context;
         }
 
-       public IEnumerable<Post> GetAll(int page)
+        public IEnumerable<Post> GetAll(int page) //IQueryable
         {
-            return db.Posts.Include(m => m.User).OrderByDescending(d => d.Date) ////было по цене
-                .Skip((page-1)*pageSize).Take(pageSize);  //потом выводить по времени последние добавленные             
+            return db.Posts.Include(m => m.User).OrderByDescending(d => d.Date)  
+                .Skip((page-1)*pageSize).Take(pageSize);               
         }
 
        public IEnumerable<Post> GetAll()
        {
-           return db.Posts.Include(m => m.User).OrderByDescending(d => d.Date);  //было по цене       
+           return db.Posts.Include(m => m.User).OrderByDescending(d => d.Date);       
        }
 
 
@@ -43,8 +43,8 @@ namespace App.DAL.Repositories
 
        public  IEnumerable<Post> Find(Func<Post, Boolean> predicate,int page)
         {
-            return db.Posts.Include(m => m.User).Where(predicate).OrderByDescending(d => d.Date) //было по цене
-                .Skip((page - 1) * pageSize).Take(pageSize).ToList(); //tolist и iquerable
+            return db.Posts.Include(m => m.User).Where(predicate).OrderByDescending(d => d.Date)  
+                .Skip((page - 1) * pageSize).Take(pageSize);  
         }
        
 

@@ -17,13 +17,12 @@ using App.BLL.BusinessModels;
 
 namespace App.WEB.Controllers
 {
-    // [Authorize]    //и как-то делать редирект на страницу со входом
     public class PostController : Controller
     {
         IPostService postService;
         IUserService userService;
 
-       public int pageSize = 3;
+       public int pageSize = 5;
 
         public PostController(IPostService pstService,IUserService usrService)
         {
@@ -34,39 +33,26 @@ namespace App.WEB.Controllers
          
         public ActionResult Index(string category,int page=1)
         {
-            /*if (!String.IsNullOrEmpty(category) && category.GetType() != typeof(string)) //делать проверку,параметр может быть int или другого типа
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }*/
-
             PageInfo pageInfo = new PageInfo
             {
                 PageNumber = page,
                 PageSize = pageSize,
-                TotalItems = category == null ?
-           postService.Count() :
-           postService.GetPosts().Where(m=>m.Category==category).Count()
+                TotalItems = category == "все" ?
+           postService.Count() : (category == null ? postService.Count() :
+           postService.GetPosts().Where(m => m.Category == category).Count())
+           
             };
 
-           
-                //=category==null?
-            //postService.Count() : postService.GetPosts(page).Where(m=>m.Category==category).Count()};
 
             IEnumerable<PostDTO> postDTOs = postService.GetPostsByCategory(category,page);
             Mapper.Initialize(m => m.CreateMap<PostDTO, PostViewModel>());
             var posts = Mapper.Map<IEnumerable<PostDTO>, List<PostViewModel>>(postDTOs);
 
-            var cvm = new CommonViewModel { PageInfo = pageInfo, Posts = posts, CurrentCategory = category };
-            
-
-            ViewBag.Categories = new SelectList(new List<string>()
+            var cvm = new CommonViewModel
             {
-                "все",
-                "курьерские услуги",
-                "ремонт",
-                "другое",
-                "доставка"
-            });
+                PageInfo = pageInfo, Posts = posts, CurrentCategory = category
+            };
+            
 
             if (Request.IsAjaxRequest())
                 return PartialView("IndexPartial",cvm);
@@ -74,16 +60,13 @@ namespace App.WEB.Controllers
             return View(cvm);
         }
 
-        //здесь нужно представление WritePost(httpget) и там выводить ссылку(написать пост)
-
-
+        [Authorize]  
         public ActionResult WritePost()  
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
-            else  
                 return View();
         }
 
@@ -96,8 +79,8 @@ namespace App.WEB.Controllers
                 Mapper.Initialize(m => m.CreateMap<PostViewModel, PostDTO>());
                 var postDto = Mapper.Map<PostViewModel, PostDTO>(post);
 
-                postDto.UserId = User.Identity.GetUserId(); //это добавил
-                postDto.Date = DateTime.Now; //это добавил
+                postDto.UserId = User.Identity.GetUserId();  
+                postDto.Date = DateTime.Now;  
                 postService.CreatePost(postDto);
                 return RedirectToAction("Index");  
             }
@@ -121,7 +104,7 @@ namespace App.WEB.Controllers
             Mapper.Initialize(m => m.CreateMap<PostDTO, PostViewModel>());
             var posts = Mapper.Map<IEnumerable<PostDTO>, List<PostViewModel>>(postDTOs);
 
-            if (Request.IsAjaxRequest()) //это добавил
+            if (Request.IsAjaxRequest())  
                 return PartialView("HandlePartial", posts);
             return View(posts);
         }
@@ -133,10 +116,7 @@ namespace App.WEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-           // Mapper.Initialize(m => m.CreateMap<PostDTO,PostViewModel>());
             IMapper Mapper = AutoMapperConfig.MapperConfiguration.CreateMapper();
-            //var source = new PostDTO();
-           // var postView = Mapper.Map<PostDTO, PostViewModel>(source);
             PostViewModel postView = Mapper.Map<PostDTO, PostViewModel>(postService.GetPost((int)id));
              
             if (postView == null)
@@ -148,14 +128,13 @@ namespace App.WEB.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Edit(PostViewModel postView) //[Bind(Include = "Id,Description,Price")]
+        public ActionResult Edit(PostViewModel postView) 
         {
             try
             {
                 Mapper.Initialize(m => m.CreateMap<PostViewModel, PostDTO>());
                 var postDto = Mapper.Map<PostViewModel, PostDTO>(postView);
-                postDto.Date = DateTime.Now; //добавил
+                postDto.Date = DateTime.Now;  
                 postService.EditPost(postDto);
                 return RedirectToAction("Handle"); //View
             }
@@ -178,7 +157,7 @@ namespace App.WEB.Controllers
             return RedirectToAction("Handle");  
         }
 
-        protected override void Dispose(bool disposing) //возможно(скорее всего) не нужен здесь
+        protected override void Dispose(bool disposing) 
         {
             postService.Dispose();
             base.Dispose(disposing);

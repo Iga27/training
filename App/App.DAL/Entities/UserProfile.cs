@@ -21,10 +21,8 @@ namespace App.DAL.Entities
 
         public string PhoneNumber { get; set; }
 
-       // [Required]
-        public virtual  User User { get; set; } //может и не виртуал
+        public virtual  User User { get; set; }  
 
-        // [HiddenInput(DisplayValue = false)]
         public string File { get; set; }
 
     }

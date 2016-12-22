@@ -61,7 +61,7 @@ namespace App.BLL.Services
             }
         }
 
-        public IEnumerable<PostDTO>GetPosts() //проверку на page сделать
+        public IEnumerable<PostDTO>GetPosts() 
         {
             Mapper.Initialize(m => m.CreateMap<Post, PostDTO>());
             return Mapper.Map<IEnumerable<Post>,List<PostDTO>>(DB.Posts.GetAll());
@@ -69,7 +69,6 @@ namespace App.BLL.Services
 
         public void EditPost(PostDTO postDto)
         {
-            //ошибка была здесь!(как в методе Create Post new Post)
             Mapper.Initialize(m => m.CreateMap<PostDTO, Post>());
             Post post= Mapper.Map<PostDTO,Post>(postDto);
             DB.Posts.Update(post);
@@ -83,10 +82,7 @@ namespace App.BLL.Services
 
         public void DeletePost(int? id)
         {
-           // if (id == null)
-             //   throw new ValidationException("укажите id поста", "");
-
-            DB.Posts.Delete((int)id); //приведение нормальное? из nullable(id.HasValue)  id.Value
+            DB.Posts.Delete((int)id); 
             DB.Save();
         }
 

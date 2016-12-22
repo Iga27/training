@@ -33,7 +33,7 @@ namespace App.BLL.Services
                 // добавляем роль
                 if (result.Succeeded)
                result= await DB.Users.AddToRoleAsync(user.Id, userDto.Role);
-                // создаем профиль клиента
+      
                 UserProfile userProfile = new UserProfile { Id = user.Id, Info = userDto.Info, Name = userDto.Name,Age=userDto.Age };
 
                 if (result.Succeeded)
@@ -59,11 +59,7 @@ namespace App.BLL.Services
             return claim;
         }
 
-      /*  public async Task<User> GetUser(string id)
-        {
-            return await DB.Users.FindById(id);
-        }*/
-
+ 
         // начальная инициализация бд
         public async Task SetInitialData(UserDTO adminDto, List<string> roles)
         {

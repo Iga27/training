@@ -6,7 +6,7 @@ namespace App.DAL.Entities
 {
      public class User : IdentityUser
     {
-        public ICollection<Post> Posts { get; set; } //это добавил(возможно нужно virtual)
+        public ICollection<Post> Posts { get; set; }  
         public virtual UserProfile UserProfile { get; set; }
     }
 }

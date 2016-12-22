@@ -23,11 +23,11 @@ namespace App.WEB.Controllers
         {
             userService = service;
         }
-        private IAuthenticationManager AuthenticationManager //нужен
+        private IAuthenticationManager AuthenticationManager 
         {
             get
             {
-                return HttpContext.GetOwinContext().Authentication; //////
+                return HttpContext.GetOwinContext().Authentication; 
             }
         }
         private IUserService UserService
@@ -58,12 +58,12 @@ namespace App.WEB.Controllers
                 }
                 else
                 {
-                    AuthenticationManager.SignOut();
+                   AuthenticationManager.SignOut();
                     AuthenticationManager.SignIn(new AuthenticationProperties
                     {
                         IsPersistent = true
                     }, claim);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Post");
                 }
             }
             return View(model);
@@ -102,9 +102,7 @@ namespace App.WEB.Controllers
                     {
                         IsPersistent = true
                     }, claim);
-                    // return RedirectToAction("Index", "Home"); ////return View
-                   // return View("~/Views/Home/Index.cshtml");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Post");
                 }
                 else
                     ModelState.AddModelError(operationInfo.Property, operationInfo.Message);
@@ -125,7 +123,7 @@ namespace App.WEB.Controllers
             {
                 Email = "somemail@mail.ru",
                 Password = "ad46D_ewr3",
-                Name = "Семен Семенович Горбунков",
+                Name = "Игорь",
                 Role="admin",
             }, new List<string> { "user", "admin" });
         }

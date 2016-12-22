@@ -28,12 +28,7 @@ namespace App.WEB.Controllers
         [HttpGet]
          public ViewResult UserProfile(string id)
         {
-            //var currentuserid = User.Identity.GetUserId();
-           
-           // var userdetail = userProfileService.GetUser(id);
-
             var profile = userProfileService.GetUserProfile(id);
-           // profile.Id = id; //это добавил
             Mapper.Initialize(m => m.CreateMap<UserProfileDTO, UserProfileViewModel>());
             var userProfile = Mapper.Map<UserProfileDTO, UserProfileViewModel>(profile);            
             return View(userProfile);
@@ -70,18 +65,23 @@ namespace App.WEB.Controllers
                     file.SaveAs(Server.MapPath(path));
                     editedProfile.File = path;
                 }
-                //editedProfile.Id = userService.; //это добавил
                 Mapper.Initialize(m => m.CreateMap<UserProfileViewModel, UserProfileDTO>());
                 var userProfileDto = Mapper.Map<UserProfileViewModel, UserProfileDTO>(editedProfile);
                 userProfileService.EditProfile(userProfileDto);
                 ViewBag.UserProfileId = editedProfile.Id;
-                return RedirectToAction("Index","Post");  //View  //возвращать представление откуда и пришел.и возвращать к профилю
+                return RedirectToAction("Index","Post");  
             }
             catch (ValidationException ex)
             {
                 ModelState.AddModelError(ex.Property, ex.Message);
             }
             return View(editedProfile);          
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            userProfileService.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

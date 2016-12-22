@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace App.BLL.DTO
 {
@@ -12,7 +9,7 @@ namespace App.BLL.DTO
         public string Description { get; set; }
         public string Category { get; set; }
         public int Price { get; set; }
-        public string UserId { get; set; } //тип string
+        public string UserId { get; set; }  
 
         public DateTime ? Date { get; set; }
     }

@@ -13,11 +13,5 @@ namespace App.BLL.Interfaces
         Task<OperationInfo> Create(UserDTO userDto);
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         Task SetInitialData(UserDTO adminDto, List<string> roles);
-
-       // UserDTO GetUser(string id);
-
-
-
-        //потом добавить авторизацию
     }
 }

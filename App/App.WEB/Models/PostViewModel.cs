@@ -9,10 +9,6 @@ namespace App.WEB.Models
 {
     public class PostViewModel
     {
-         //[ScaffoldColumn(false)]
-       // [HiddenInput(DisplayValue = false)]
-       // [Key]
-        //может убрать его вообще из ViewModel
          public int Id { get; set; }
 
          [Required]
@@ -25,18 +21,14 @@ namespace App.WEB.Models
          public string Category { get; set; }
 
          [Required]
+         [RegularExpression(@"^[0-9]+$", ErrorMessage = "только целые числа")]
          [Display(Name = "Цена")]
          [Range(0, 999999, ErrorMessage = "Недопустимая цена")]
          public int Price { get; set; }
 
         [Display(Name = "Дата создания(редактирования)")]
-         public DateTime ? Date { get; set; } ////
+         public DateTime ? Date { get; set; } 
 
-        // [ScaffoldColumn(false)]
-       // [HiddenInput(DisplayValue = false)]
-      //  [Key]
-         public string UserId { get; set; } //? скрытое должно быть
-
-     //   public DateTime? Date { get; set; } //////////
+         public string UserId { get; set; } 
     }
 }

@@ -3,16 +3,14 @@ using App.DAL.Entities;
 using System.Data.Entity;
 
 namespace App.DAL.EF
-{ //проблема в :DbContext
+{ 
     public class AppContext : IdentityDbContext<User>
      
     {
         public AppContext(string conectionString) : base(conectionString)
         {
         }
-       // public DbSet<User> Users { get; set; }
 
-       // public DbSet<Role> Roles { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }  
 
         public DbSet<Post> Posts { get; set; }

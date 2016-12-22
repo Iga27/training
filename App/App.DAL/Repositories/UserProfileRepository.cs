@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace App.DAL.Repositories
 {
-    public class UserProfileRepository : IUserProfileRepository //, IDisposable
+    public class UserProfileRepository : IUserProfileRepository 
     {
         private AppContext db;
 
@@ -22,16 +22,14 @@ namespace App.DAL.Repositories
         {
             return db.UserProfiles.Find(id);
         }
-        
-        public void Create(UserProfile profile) //вроде не нужен
+
+        public void Create(UserProfile profile)  
         {
             db.UserProfiles.Add(profile);
-            db.SaveChanges(); //добавил
+            db.SaveChanges();  
         }
-
-         public void Update(UserProfile item) //rename in AddOrUpdate
+         public void Update(UserProfile item) 
          {
-
              db.Entry(item).State = EntityState.Modified;
              if(item.File==null)
              db.Entry(item).Property(x => x.File).IsModified = false;
@@ -43,14 +41,5 @@ namespace App.DAL.Repositories
              if (userProfile != null)
                  db.UserProfiles.Remove(userProfile);
          }
-
-
-        
-
-        /* public void Dispose() //это добавил и :IDisposable
-         {
-             db.Dispose();
-         }*/
-     
     }
 }
