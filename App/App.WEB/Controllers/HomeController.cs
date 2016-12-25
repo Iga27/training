@@ -22,6 +22,7 @@ namespace App.Web.Controllers
         public ActionResult Index()
         {
             return View("Index");
+
         }
 
         [HttpPost]

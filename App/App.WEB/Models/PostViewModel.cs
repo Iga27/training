@@ -11,16 +11,16 @@ namespace App.WEB.Models
     {
          public int Id { get; set; }
 
-         [Required]
+         [Required(ErrorMessage = "заполните поле Описание")]
          [MaxLength(500, ErrorMessage = "Превышено максимальное число символов")]
          [Display(Name = "Описание")]
          public string Description { get; set; }
 
-         [Required]
+         [Required(ErrorMessage = "заполните поле Категория")]
          [Display(Name = "Категория")]
          public string Category { get; set; }
 
-         [Required]
+         [Required(ErrorMessage = "заполните поле Цена")]
          [RegularExpression(@"^[0-9]+$", ErrorMessage = "только целые числа")]
          [Display(Name = "Цена")]
          [Range(0, 999999, ErrorMessage = "Недопустимая цена")]

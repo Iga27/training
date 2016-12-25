@@ -21,12 +21,13 @@
                                     @if (Model.File != null)
                                     {
                                         <div>
-                                            <img class="img-rounded img-responsive" alt="" src=@Url.Content(Model.File)>
+                                            <img class="img-rounded img-responsive" alt="" src="@Url.Content("~/Content/Images/" + Model.File)" />
+
                                         </div>
                                     }
                                     else
                                     {
-                                        <img class="img-rounded img-responsive" alt="" src=@Url.Content("~/Images/avatar.jpg")>
+                                        <img class="img-rounded img-responsive" alt="" src="@Url.Content("~/Content/Images/avatar.jpg")" />
                                     }
                                 </figure>
 

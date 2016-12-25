@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @using App.WEB.Helpers
 @using App.WEB.Models
- 
+
 @model App.WEB.Models.CommonViewModel
 
 
@@ -14,49 +14,50 @@
         Url = Url.Action("Index")
     };
 }
- 
+
 
 @if (ViewContext.HttpContext.User.IsInRole("admin"))
 {
     <p class="text-muted text-center">
         Вы вошли как администратор
     </p>
-} else 
+}
+else
 { <p class="text-muted">
-    <br>
-    Вы находитесь на странице всех заданий Your Job. Здесь вы можете найти задание на выполнение. Также вы можете сами подать заявку
-</p>
+        <br>
+        Вы находитесь на странице всех заданий Your Job. Здесь вы можете найти задание на выполнение. Также вы можете сами подать заявку
+    </p>
 }
 
 <br>
 <br>
- 
- 
-    @using (Ajax.BeginForm("Index", ajaxOptions))
-    {
-        <a href=@Url.Action("WritePost", "Post") class="btn btn-warning btn-default">Оформить заявку</a>
-        <br>
-        <br>
-        <br>
-        <div class="form-inline">
-            <label class="control-label">Выберите категорию :  </label>
 
-            @Html.DropDownList("Category", new SelectList(Model.CategoriesList),
+
+@using (Ajax.BeginForm("Index", ajaxOptions))
+{
+    <a href=@Url.Action("WritePost", "Post") class="btn btn-warning btn-default">Оформить заявку</a>
+    <br>
+    <br>
+    <br>
+    <div class="form-inline">
+        <label class="control-label">Выберите категорию :  </label>
+
+        @Html.DropDownList("Category", new SelectList(Model.CategoriesList),
                     htmlAttributes: new { @class = "form-control" })
 
-            <input type="submit" value="Поиск" class="btn btn-default" />
+        <input type="submit" value="Поиск" class="btn btn-default" />
 
-            <h3>Все существующие заявки</h3>
-        </div>
-    }
-     
+        <h3>Все существующие заявки</h3>
+    </div>
+}
+
 <div id="container">
 
     @Html.Partial("IndexPartial")
 
 </div>
-  
- @section scripts
+
+@section scripts
 {
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
@@ -74,5 +75,7 @@
         });
     </script>
 }
-@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
-@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+
+
+@Scripts.Render("~/Scripts/jquery-3.1.1.js")
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")

@@ -15,6 +15,7 @@ using System.Net;
 using App.WEB.App_Start;
 using App.BLL.BusinessModels;
 
+
 namespace App.WEB.Controllers
 {
     public class PostController : Controller
@@ -52,13 +53,14 @@ namespace App.WEB.Controllers
             {
                 PageInfo = pageInfo, Posts = posts, CurrentCategory = category
             };
-            
 
             if (Request.IsAjaxRequest())
                 return PartialView("IndexPartial",cvm);
             
             return View(cvm);
         }
+
+     
 
         [Authorize]  
         public ActionResult WritePost()  
@@ -104,10 +106,12 @@ namespace App.WEB.Controllers
             Mapper.Initialize(m => m.CreateMap<PostDTO, PostViewModel>());
             var posts = Mapper.Map<IEnumerable<PostDTO>, List<PostViewModel>>(postDTOs);
 
-            if (Request.IsAjaxRequest())  
+             if (Request.IsAjaxRequest())  
                 return PartialView("HandlePartial", posts);
             return View(posts);
         }
+
+       
        
         [HttpGet]
         public ActionResult Edit(int? id)
@@ -136,7 +140,7 @@ namespace App.WEB.Controllers
                 var postDto = Mapper.Map<PostViewModel, PostDTO>(postView);
                 postDto.Date = DateTime.Now;  
                 postService.EditPost(postDto);
-                return RedirectToAction("Handle"); //View
+                return RedirectToAction("Handle"); 
             }
             catch (ValidationException ex)
             {

@@ -60,10 +60,10 @@ namespace App.WEB.Controllers
                 if (file != null)
                 {
                     DateTime time = DateTime.Now;
-                    string fileName = System.IO.Path.GetFileName(file.FileName);
-                    string path = "~/Images/" +time.ToString("H:mm:ss").Replace(":", "_")+ fileName; 
+                    string fileName =time.ToString("H:mm:ss").Replace(":", "_") + System.IO.Path.GetFileName(file.FileName);
+                    string path = "~/Content/Images/"+fileName; 
                     file.SaveAs(Server.MapPath(path));
-                    editedProfile.File = path;
+                    editedProfile.File = fileName;
                 }
                 Mapper.Initialize(m => m.CreateMap<UserProfileViewModel, UserProfileDTO>());
                 var userProfileDto = Mapper.Map<UserProfileViewModel, UserProfileDTO>(editedProfile);

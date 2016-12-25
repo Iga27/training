@@ -8,9 +8,11 @@ namespace App.WEB.Models
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "заполните поле Почта")]
+        [Display(Name = "Почта")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "заполните поле Пароль")]
+        [Display(Name = "Пароль")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

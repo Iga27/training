@@ -1,50 +1,50 @@
 ﻿@model IEnumerable<App.WEB.Models.PostViewModel>
 
 
- 
+
 <h2>Управление</h2>
 <p>
     <a href=@Url.Action("WritePost", "Post") class="btn btn-default btn-lg">Создать пост</a>
 </p>
-<div class="table-responsive"> 
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var p in Model)
-    {
+<div class="table-responsive">
+    <table class="table table-hover">
         <tr>
-            <td>
-                @p.Category
-            </td>
-            <td style="word-break: break-all;">
-                @p.Description
-            </td>
-            <td>
-                @p.Price
-            </td>
-            <td>
-                @p.Date
-            </td>
-            <td>
-               <button type="button" class="btn btn-default btn-xs"> @Html.ActionLink("Редактировать", "Edit", new { id = @p.Id })</button>
-               <button type="button" class="btn btn-default btn-xs">@Ajax.ActionLink("Удалить", "Delete", new { id = @p.Id }, new AjaxOptions { UpdateTargetId = "container"})</button>
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
- </div>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>
+                    @p.Category
+                </td>
+                <td style="word-break: break-all;">
+                    @p.Description
+                </td>
+                <td>
+                    @p.Price
+                </td>
+                <td>
+                    @p.Date
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-default btn-xs"> @Html.ActionLink("Редактировать", "Edit", new { id = @p.Id })</button>
+                    <button type="button" class="btn btn-default btn-xs">@Ajax.ActionLink("Удалить", "Delete", new { id = @p.Id }, new AjaxOptions { UpdateTargetId = "handle" })</button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

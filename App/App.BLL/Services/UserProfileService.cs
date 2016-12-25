@@ -35,6 +35,20 @@ namespace App.BLL.Services
             return Mapper.Map<UserProfile, UserProfileDTO>(userProfile);
         }
 
+          public void CreateUserProfile(UserProfileDTO userProfileDto)  
+         {
+             UserProfile profile = new UserProfile
+             {
+                 Id=userProfileDto.Id,
+                 Age = userProfileDto.Age,
+                 CategoriesOfWork = userProfileDto.CategoriesOfWork,
+                 Info = userProfileDto.Info,
+                 Name = userProfileDto.Name
+             };
+            DB.UserProfiles.Create(profile);
+             DB.Save();
+         } 
+
         public void EditProfile(UserProfileDTO userProfileDto)
         {  
             Mapper.Initialize(m => m.CreateMap<UserProfileDTO, UserProfile>());

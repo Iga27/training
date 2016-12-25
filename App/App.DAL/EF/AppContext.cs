@@ -17,20 +17,17 @@ namespace App.DAL.EF
 
         public DbSet<GuestBookMessage> GuestBookMessages { get; set; }
 
-        static AppContext()  //потом удалить
+        /*static AppContext()  //потом удалить
         {
             Database.SetInitializer<AppContext>(new AppDbInitializer());
-        }
+        }*/
     }
-    public class AppDbInitializer : DropCreateDatabaseIfModelChanges<AppContext> //былоIfModelChanges //потом удалить (проверь,не используется ли бд в данный момент)
+      /*public class AppDbInitializer : DropCreateDatabaseAlways<AppContext> //былоIfModelChanges //потом удалить (проверь,не используется ли бд в данный момент)
     {
         protected override void Seed(AppContext db)
         {
-            db.Posts.Add(new Post { Description = "недалеко", Category = "курьерские услуги", Price = 220 });
-            db.Posts.Add(new Post { Description = "еда", Category = "курьерские услуги", Price = 820 });
-            db.Posts.Add(new Post { Description = "большой пакет", Category = "другое", Price = 880 });
-            db.Posts.Add(new Post { Description = "починить кран", Category = "Ремонт", Price = 560 });
+             
             db.SaveChanges();
         }
-    }
+    } */
 }

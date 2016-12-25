@@ -6,32 +6,29 @@
 
 <h2 class="text-center text-info">Вы можете оставить свой комментарий</h2>
 
-@using (Ajax.BeginForm("AddMessage", "Home", new AjaxOptions { UpdateTargetId = "container" }))
+@using (Ajax.BeginForm("AddMessage", "Home", new AjaxOptions { UpdateTargetId = "guestbook", InsertionMode = InsertionMode.InsertBefore }))
 {
-        <div>
-            <h3 class="text-success">Добавить запись</h3>
-            Ваше имя: <br /> <input type="text" name="GuestName" maxlength="50" class="form-control" placeholder=" Введите имя" />
-            <br />
-            Сообщение <br />
-            <div class="form-group">
-                <textarea name="Message" rows="5" cols="40" class="form-control" placeholder="Введите сообщение"></textarea>
-            </div>
-            <br />
-         
-                <button type="submit" id="submit" name="submit" class="btn btn-success">Отправить</button>
-            
+    <div>
+        <h3 class="text-success">Добавить запись</h3>
+        Ваше имя: <br /> <input type="text" name="GuestName" maxlength="50" class="form-control" placeholder=" Введите имя" />
+        <br />
+        Сообщение <br />
+        <div class="form-group">
+            <textarea name="Message" rows="5" cols="40" class="form-control" placeholder="Введите сообщение"></textarea>
         </div>
+        <br />
+
+        <button type="submit" id="submit" name="submit" class="btn btn-success">Отправить</button>
+
+    </div>
 }
 
 
 
-<div id="container">
+<div id="guestbook">
     @Html.Partial("GuestBookPartial")
 </div>
 
 
-
-
-@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
-@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
-
+ @Scripts.Render("~/Scripts/jquery-3.1.1.js")
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")

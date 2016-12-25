@@ -91,7 +91,8 @@ namespace App.WEB.Controllers
                 {
                     Email = model.Email,
                     Password = model.Password,
-                    Role = "user"
+                    Role = "user",
+                    Age=(int)model.Age
                 };
                 OperationInfo operationInfo = await userService.Create(userDto);
                 if (operationInfo.Succedeed)
@@ -121,8 +122,8 @@ namespace App.WEB.Controllers
         {
             await userService.SetInitialData(new UserDTO
             {
-                Email = "somemail@mail.ru",
-                Password = "ad46D_ewr3",
+                Email = "mymail@mail.ru",
+                Password = "123456",
                 Name = "Игорь",
                 Role="admin",
             }, new List<string> { "user", "admin" });

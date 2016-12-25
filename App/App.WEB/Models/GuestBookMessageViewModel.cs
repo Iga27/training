@@ -10,7 +10,6 @@ namespace App.WEB.Models
     {
         public int Id { get; set; }
         public string GuestName { get; set; }
-        [Required]
         public string Message { get; set; }
         public DateTime WhenAdded { get; set; }
     }
