@@ -17,7 +17,6 @@ namespace App.BLL.Interfaces
         IEnumerable<PostDTO> GetPostsByCategory(string category, int page);
 
         int Count();
-
-        void Dispose();
+ 
     }
 }

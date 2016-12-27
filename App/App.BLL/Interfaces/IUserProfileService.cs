@@ -11,7 +11,6 @@ namespace App.BLL.Interfaces
        void EditProfile(UserProfileDTO userProfileDto);
 
        void CreateUserProfile(UserProfileDTO userProfileDto);
-
-       void Dispose();
+ 
     }
 }

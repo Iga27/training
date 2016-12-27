@@ -78,10 +78,10 @@ namespace App.WEB.Controllers
             return View(editedProfile);          
         }
 
-        protected override void Dispose(bool disposing)
+        /*protected override void Dispose(bool disposing)
         {
             userProfileService.Dispose();
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

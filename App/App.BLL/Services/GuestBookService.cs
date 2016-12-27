@@ -35,10 +35,6 @@ namespace App.BLL.Services
            Mapper.Initialize(cfg => cfg.CreateMap<GuestBookMessage, GuestBookMessageDTO>());
            return Mapper.Map<IEnumerable<GuestBookMessage>, List<GuestBookMessageDTO>>(DB.GuestBook.GetAll());
        }
-
-        public void Dispose()
-        {
-            DB.Dispose();
-        }
+ 
     }
 }

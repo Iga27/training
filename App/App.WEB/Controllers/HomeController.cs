@@ -58,10 +58,10 @@ namespace App.Web.Controllers
             return View("GuestBook", messages);
         }
 
-        protected override void Dispose(bool disposing)
+       /* protected override void Dispose(bool disposing)
         {
             guestBookService.Dispose();
             base.Dispose(disposing);
-        }
+        }*/
     }
 }
