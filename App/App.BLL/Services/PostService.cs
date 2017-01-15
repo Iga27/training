@@ -85,6 +85,10 @@ namespace App.BLL.Services
             DB.Posts.Delete((int)id); 
             DB.Save();
         }
- 
+
+        public void Dispose()
+        {
+            DB.Dispose();
+        }
     }
 }

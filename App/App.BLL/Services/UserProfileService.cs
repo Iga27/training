@@ -57,5 +57,10 @@ namespace App.BLL.Services
             DB.Save(); 
         }
 
+        public void Dispose()
+        {
+            DB.Dispose();
+        }
+
     }
 }

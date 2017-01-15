@@ -161,11 +161,11 @@ namespace App.WEB.Controllers
             return RedirectToAction("Handle");  
         }
 
-       /* protected override void Dispose(bool disposing) 
+        protected override void Dispose(bool disposing) 
         {
             postService.Dispose();
             base.Dispose(disposing);
-        }*/
+        }
 
         
     }

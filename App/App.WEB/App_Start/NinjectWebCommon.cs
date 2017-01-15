@@ -13,6 +13,10 @@ namespace App.WEB.App_Start
     using Ninject.Modules;
 
     using App.BLL.Infrastructure;
+    using App.BLL.Interfaces;
+    using App.WEB.Util;
+    using System.Web.Http;
+    using WebApiContrib.IoC.Ninject;
 
     public static class NinjectWebCommon 
     {
@@ -50,6 +54,7 @@ namespace App.WEB.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
                 return kernel;
             }
             catch
@@ -66,6 +71,7 @@ namespace App.WEB.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             System.Web.Mvc.DependencyResolver.SetResolver(new App.WEB.Util.NinjectDependencyResolver(kernel));
+
         }        
     }
 }

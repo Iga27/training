@@ -6,29 +6,89 @@
 
 <h2 class="text-center text-info">Вы можете оставить свой комментарий</h2>
 
-@using (Ajax.BeginForm("AddMessage", "Home", new AjaxOptions { UpdateTargetId = "guestbook", InsertionMode = InsertionMode.InsertBefore }))
-{
-    <div>
-        <h3 class="text-success">Добавить запись</h3>
-        Ваше имя: <br /> <input type="text" name="GuestName" maxlength="50" class="form-control" placeholder=" Введите имя" />
-        <br />
-        Сообщение <br />
-        <div class="form-group">
-            <textarea name="Message" rows="5" cols="40" class="form-control" placeholder="Введите сообщение"></textarea>
-        </div>
-        <br />
-
-        <button type="submit" id="submit" name="submit" class="btn btn-success">Отправить</button>
-
+<div id="createMessage">
+    <h3 class="text-success">Добавить запись</h3>
+    <input type="hidden" name="WhenAdded">
+    Ваше имя: <br /> <input type="text" name="GuestName" id="GuestName" maxlength="50" class="form-control" placeholder=" Введите имя" />
+    <br />
+    Сообщение <br />
+    <div class="form-group">
+        <textarea name="Message" id="Message" rows="5" cols="40" class="form-control" placeholder="Введите сообщение"></textarea>
     </div>
-}
+    <br />
 
-
-
-<div id="guestbook">
-    @Html.Partial("GuestBookPartial")
+    <button type="submit" id="submit" name="submit" class="btn btn-success">Отправить</button>
 </div>
 
+<h3 class="text-center">Все записи</h3>
 
- @Scripts.Render("~/Scripts/jquery-3.1.1.js")
-@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+<div id="allRecords"></div>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+
+            GetAllMessages();
+
+            $("#submit").click(function (event) {
+                event.preventDefault();
+                AddMessage();
+            });
+
+        });
+
+        function GetAllMessages() {
+
+            $("#createMessage").css('display', 'block');
+            $.ajax({
+                url: '/api/guestbookapi',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    ShowResponse(data);
+                },
+            });
+        }
+
+        function AddMessage() {
+          
+
+            var newMessage = {
+                GuestName: $('#GuestName').val(),
+                Message: $('#Message').val()
+               
+            };
+
+            $.ajax({
+                url: '/api/guestbookapi/',
+                type: 'POST',
+                data: JSON.stringify(newMessage),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllMessages();
+                },
+            });
+        }
+
+
+        function ShowResponse(elements) {
+            var strResult = "";
+            $.each(elements, function (i, element) {
+                strResult += "<div class='row'>  <div col-lg-6 col-md-6> <div class='panel panel-info'>  <div class='panel-body'>" +
+                    " <p class='text-primary' style='word-break: break-all;'>" + element.Message + "</p> </div>" +
+                    "<div class='panel-footer'> <p>Пользователь <b>" + element.GuestName + "</b> оставил комментарий. Время: "+element.WhenAdded+ "</p>"+
+                    "</div></div></div></div>";
+
+
+            });
+
+            $("#allRecords").html(strResult);
+
+        }
+
+    </script>
+}
+

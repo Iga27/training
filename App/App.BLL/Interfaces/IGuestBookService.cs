@@ -11,6 +11,7 @@ namespace App.BLL.Interfaces
         void AddMessage(GuestBookMessageDTO gbmDto);
 
         IEnumerable<GuestBookMessageDTO> GetMessages();
- 
+
+        void Dispose();
     }
 }
