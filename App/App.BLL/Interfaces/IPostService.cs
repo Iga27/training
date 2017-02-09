@@ -18,6 +18,5 @@ namespace App.BLL.Interfaces
 
         int Count();
 
-        void Dispose();
     }
 }

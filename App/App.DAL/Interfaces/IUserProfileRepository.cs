@@ -1,5 +1,6 @@
 ﻿using App.DAL.Entities;
 using System;
+using System.Collections.Generic;
 
 
 namespace App.DAL.Interfaces
@@ -9,5 +10,6 @@ namespace App.DAL.Interfaces
         void Delete(string id);
 
         UserProfile Get(string id);
+
     }
 }

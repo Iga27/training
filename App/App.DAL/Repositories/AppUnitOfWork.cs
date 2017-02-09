@@ -24,6 +24,8 @@ namespace App.DAL.Repositories
 
           PostRepository postRepository;
 
+          MessageRepository messageRepository;
+
           GuestBookRepository guestBookRepository;
 
          public AppUnitOfWork(string connectionString) 
@@ -41,6 +43,16 @@ namespace App.DAL.Repositories
                      postRepository = new PostRepository(db);
                  return postRepository;
              }       
+         }
+
+         public IMessageRepository Messages
+         {
+             get
+             {
+                 if (messageRepository == null)
+                     messageRepository = new MessageRepository(db);
+                 return messageRepository;
+             }
          }
 
          public IGuestBookRepository GuestBook
@@ -106,7 +118,7 @@ namespace App.DAL.Repositories
 
          public void Dispose()
          {
-             Dispose(true);
+             this.Dispose(true);
              GC.SuppressFinalize(this);
          }
     }

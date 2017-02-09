@@ -53,14 +53,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\AppContext.cs" />
+    <Compile Include="Entities\Dialog.cs" />
     <Compile Include="Entities\GuestBookMessage.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Identity\MyRoleManager.cs" />
     <Compile Include="Identity\MyUserManager.cs" />
     <Compile Include="Interfaces\IGuestBookRepository.cs" />
+    <Compile Include="Interfaces\IMessageRepository.cs" />
     <Compile Include="Interfaces\IPostRepository.cs" />
     <Compile Include="Interfaces\IUserProfileRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AppUnitOfWork.cs" />
     <Compile Include="Repositories\GuestBookRepository.cs" />
+    <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\UserProfileRepository.cs" />
   </ItemGroup>

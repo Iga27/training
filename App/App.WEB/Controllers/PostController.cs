@@ -14,6 +14,8 @@ using Microsoft.AspNet.Identity;
 using System.Net;
 using App.WEB.App_Start;
 using App.BLL.BusinessModels;
+ 
+using App.WEB.Hubs;
 
 
 namespace App.WEB.Controllers
@@ -94,6 +96,8 @@ namespace App.WEB.Controllers
             return View(post);
         }
 
+        
+
 
         //Handle
 
@@ -161,11 +165,6 @@ namespace App.WEB.Controllers
             return RedirectToAction("Handle");  
         }
 
-        protected override void Dispose(bool disposing) 
-        {
-            postService.Dispose();
-            base.Dispose(disposing);
-        }
 
         
     }

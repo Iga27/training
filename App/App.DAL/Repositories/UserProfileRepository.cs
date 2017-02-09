@@ -41,5 +41,7 @@ namespace App.DAL.Repositories
              if (userProfile != null)
                  db.UserProfiles.Remove(userProfile);
          }
+
+         
     }
 }

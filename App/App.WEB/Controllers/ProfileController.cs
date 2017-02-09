@@ -14,6 +14,7 @@ using App.WEB.App_Start;
 
 namespace App.WEB.Controllers
 {
+    [Authorize]  
     public class ProfileController : Controller
     {
           IUserProfileService userProfileService;
@@ -30,7 +31,7 @@ namespace App.WEB.Controllers
         {
             var profile = userProfileService.GetUserProfile(id);
             Mapper.Initialize(m => m.CreateMap<UserProfileDTO, UserProfileViewModel>());
-            var userProfile = Mapper.Map<UserProfileDTO, UserProfileViewModel>(profile);            
+            var userProfile = Mapper.Map<UserProfileDTO, UserProfileViewModel>(profile);
             return View(userProfile);
         }
 
@@ -78,10 +79,5 @@ namespace App.WEB.Controllers
             return View(editedProfile);          
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            userProfileService.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }

@@ -5,6 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using App.BLL.DTO;
 using App.BLL.Infrastructure;
+using App.DAL.Entities;
+ 
 
 namespace App.BLL.Interfaces
 {
@@ -13,5 +15,7 @@ namespace App.BLL.Interfaces
         Task<OperationInfo> Create(UserDTO userDto);
         Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         Task SetInitialData(UserDTO adminDto, List<string> roles);
+
+
     }
 }

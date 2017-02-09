@@ -36,9 +36,5 @@ namespace App.BLL.Services
            return Mapper.Map<IEnumerable<GuestBookMessage>, List<GuestBookMessageDTO>>(DB.GuestBook.GetAll());
        }
 
-       public void Dispose()
-       {
-           DB.Dispose();
-       }
     }
 }

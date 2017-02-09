@@ -25,11 +25,15 @@ namespace App.WEB.Models
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
 
+        [Required(ErrorMessage = "заполните поле Имя")]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }   ///////
+
         [Required(ErrorMessage = "заполните поле Возраст")]
         [Display(Name = "Ваш возраст")]
         [Range(0, 200, ErrorMessage = "Недопустимый возраст")]
         public int ? Age { get; set; }
        
-       
+        
     }
 }

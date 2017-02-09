@@ -25,5 +25,6 @@ namespace App.DAL.Entities
 
         public string File { get; set; }
 
+
     }
 }

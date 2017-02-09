@@ -14,6 +14,8 @@ namespace App.DAL.Interfaces
        
         IPostRepository Posts { get; }
 
+        IMessageRepository Messages { get; }
+
         IGuestBookRepository GuestBook { get; }
 
          Task SaveAsync();

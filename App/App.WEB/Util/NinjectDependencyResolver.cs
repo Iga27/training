@@ -34,6 +34,7 @@ namespace App.WEB.Util
             kernel.Bind<IGuestBookService>().To<GuestBookService>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserProfileService>().To<UserProfileService>();
+            kernel.Bind<IMessageService>().To<MessageService>();
         }
     }
 }

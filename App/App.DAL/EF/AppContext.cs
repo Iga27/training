@@ -17,17 +17,21 @@ namespace App.DAL.EF
 
         public DbSet<GuestBookMessage> GuestBookMessages { get; set; }
 
-        /*static AppContext()  //потом удалить
+        public DbSet<Dialog> Dialogs { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
+
+        /* static AppContext()  //потом удалить
         {
             Database.SetInitializer<AppContext>(new AppDbInitializer());
-        }*/
+        } */
     }
-      /*public class AppDbInitializer : DropCreateDatabaseAlways<AppContext> //былоIfModelChanges //потом удалить (проверь,не используется ли бд в данный момент)
+        public class AppDbInitializer : DropCreateDatabaseIfModelChanges<AppContext> //былоIfModelChanges //потом удалить (проверь,не используется ли бд в данный момент)
     {
         protected override void Seed(AppContext db)
         {
              
             db.SaveChanges();
         }
-    } */
+    }   
 }

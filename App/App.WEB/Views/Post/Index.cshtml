@@ -57,6 +57,8 @@ else
 
 </div>
 
+
+
 @section scripts
 {
     <script language="javascript" type="text/javascript">
@@ -66,6 +68,7 @@ else
                     url: $(this).attr("href"),
                     type: 'GET',
                     cache: false,
+                    async: true,
                     success: function (result) {
                         $('#container').html(result);
                     }
@@ -76,6 +79,6 @@ else
     </script>
 }
 
-
 @Scripts.Render("~/Scripts/jquery-3.1.1.js")
 @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+

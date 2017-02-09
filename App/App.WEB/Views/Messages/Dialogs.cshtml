@@ -1,0 +1,49 @@
+﻿@model IEnumerable<App.WEB.Models.DialogViewModel>
+@using Microsoft.AspNet.Identity        
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link type="text/css" rel="stylesheet" href=@Url.Content("~/Content/Dialogs.css") />
+}
+@{
+    ViewBag.Title = "Диалоги";
+}
+ <h2 class="text-center text-success">Диалоги</h2>
+<div id="dialogs" class="table-responsive" >
+    <table class="table table-hover" .table-responsive>
+        @foreach (var p in Model)
+        {
+                <tr data-status="pagado" class="selected">
+                    <td >
+                        <div class="media">
+                            <a href=@Url.Action("UserProfile", "Profile", new { id=(p.SenderId!=User.Identity.GetUserId()?p.SenderId:p.RecipientId)}) class="pull-left">
+                                           @if (p.File != null)
+                                           {
+                                            <img  src="@Url.Content("~/Content/Images/" + p.File)" class="media-photo" />
+                                           }
+                                           else
+                                           {
+                                            <img  alt="" src="@Url.Content("~/Content/Images/avatar.jpg")" class="media-photo" />
+                                           }
+                            </a>
+                            <div class="media-body">
+                                
+                                <h4 class="title">
+                                   @p.SenderName
+
+                                </h4>
+                                <p style="word-break: break-all;"> 
+                                 @Html.ActionLink("к сообщениям", "Messages", new { dialogId = @p.DialogId })
+                                      
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+          
+        }
+    </table>
+</div>
+ 
+@Scripts.Render("~/Scripts/jquery-3.1.1.js")
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+

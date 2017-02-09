@@ -1,5 +1,6 @@
 ﻿using App.BLL.DTO;
 using System;
+using System.Collections.Generic;
  
 
 namespace App.BLL.Interfaces
@@ -10,8 +11,7 @@ namespace App.BLL.Interfaces
 
        void EditProfile(UserProfileDTO userProfileDto);
 
-       void CreateUserProfile(UserProfileDTO userProfileDto);
 
-       void Dispose();
+      
     }
 }

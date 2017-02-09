@@ -9,6 +9,9 @@
             <li>
                 @Html.ActionLink("Мой профиль", "UserProfile", "Profile", new { id = User.Identity.GetUserId() }, htmlAttributes: new { title = "Manage" })
             </li>
+            <li>
+                @Html.ActionLink("Сообщения", "Dialogs", "Messages")
+            </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
         </ul>
     }

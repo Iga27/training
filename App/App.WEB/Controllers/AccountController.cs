@@ -92,7 +92,8 @@ namespace App.WEB.Controllers
                     Email = model.Email,
                     Password = model.Password,
                     Role = "user",
-                    Age=(int)model.Age
+                    Age=(int)model.Age,
+                    Name=model.Name  
                 };
                 OperationInfo operationInfo = await userService.Create(userDto);
                 if (operationInfo.Succedeed)

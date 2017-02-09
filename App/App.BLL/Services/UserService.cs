@@ -8,6 +8,7 @@ using App.BLL.Infrastructure;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
+using AutoMapper;
  
 
 namespace App.BLL.Services

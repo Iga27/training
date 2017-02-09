@@ -12,6 +12,5 @@ namespace App.BLL.Interfaces
 
         IEnumerable<GuestBookMessageDTO> GetMessages();
 
-        void Dispose();
     }
 }

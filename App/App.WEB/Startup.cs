@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using App.BLL.Interfaces;
 using App.BLL.Services;
 using Owin;
+using Microsoft.AspNet.SignalR;
+using App.WEB.Hubs;
  
 [assembly: OwinStartup(typeof(App.WEB.Startup))]
 
@@ -14,8 +16,13 @@ namespace App.WEB
     public class Startup
     {
         IServiceCreator serviceCreator = new ServiceCreator();
+
+        
         public void Configuration(IAppBuilder app)
         {
+            
+
+            app.MapSignalR();
             app.CreatePerOwinContext<IUserService>(CreateUserService);
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
